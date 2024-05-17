@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string> // Supports use of "string" data type
+
+int main() {
+  std::string wordRelative;
+  std::string wordFood;
+  std::string wordAdjective;
+  std::string wordTimePeriod;
+
+  // Get user's words
+  std::cout << "Enter a type of relative: ";
+  std::cin >> wordRelative;
+
+  std::cout << "Enter a type of food: ";
+  std::cin >> wordFood;
+
+  std::cout << "Enter an adjective: ";
+  std::cin >> wordAdjective;
+
+  std::cout << "Enter a time period (week/month): ";
+  std::cin >> wordTimePeriod;
+
+  // Tell the story
+  std::cout << std::endl;
+  std::cout << "My " << wordRelative << " says eating " << wordFood
+            << std::endl;
+  std::cout << "will make me more " << wordAdjective << "," << std::endl;
+  std::cout << "so now I eat it every " << wordTimePeriod << "." << std::endl;
+
+  return 0;
+}

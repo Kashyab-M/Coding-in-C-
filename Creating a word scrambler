@@ -1,0 +1,21 @@
+#include <iostream> // Include the input/output library for use in the program
+#include <string>   // Include the string library to use string data types
+using namespace std; // Use the standard namespace to avoid prefixing std:: to standard library objects
+
+int main() {
+   string userWord; // Declare a variable to store the user's word
+
+   cout << "Enter a 5-letter word: "; // Prompt the user to enter a 5-letter word
+   cin  >> userWord; // Read the 5-letter word from the user input and store it in userWord
+
+   // Output the scrambled version of the userWord
+   cout << "Scrambled: ";
+   cout << userWord.at(3); // Output the fourth character
+   cout << userWord.at(1); // Output the second character
+   cout << userWord.at(4); // Output the fifth character
+   cout << userWord.at(0); // Output the first character
+   cout << userWord.at(2); // Output the third character
+   cout << endl; // End the line for neatness
+
+   return 0; // Return 0 to signal the end of the program
+}

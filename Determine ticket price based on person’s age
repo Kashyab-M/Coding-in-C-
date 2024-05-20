@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+   int userAge;           // Variable to store the user's age
+   int movieTicketPrice;  // Variable to store the price of the movie ticket
+
+   cout << "Enter your age: ";
+   cin  >> userAge;       // Taking input of user's age
+
+   if (userAge <= 12) {             // If the user is 12 years old or younger
+      cout << "Child ticket discount." << endl;
+      movieTicketPrice = 11;        // Assigning ticket price for children
+   }
+   else if (userAge >= 65) {        // If the user is 65 years old or older
+      cout << "Senior ticket discount." << endl;    
+      movieTicketPrice = 12;        // Assigning ticket price for seniors
+   }
+   else {                           // For all other ages
+      movieTicketPrice = 14;         // Assigning regular ticket price
+   }
+
+   cout << "Movie ticket price: $" << movieTicketPrice << endl;  // Displaying the final ticket price
+   return 0;
+}

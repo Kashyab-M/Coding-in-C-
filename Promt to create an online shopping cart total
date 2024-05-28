@@ -1,0 +1,119 @@
+// Developer: Kashyab Maharjan
+// Date: May 27, 2024
+// Purpose:This program prompts the user to create a online shopping cart total.
+
+#include <iostream>  // Include the input-output stream library
+#include <string>    // Include the string library
+using namespace std; // Use the standard namespace
+
+// Class declaration for ItemToPurchase
+class ItemToPurchase {
+public:
+  ItemToPurchase(); // Default constructor
+
+  // Mutator functions
+  void SetName(string name);      // Set the name of the item
+  void SetPrice(int price);       // Set the price of the item
+  void SetQuantity(int quantity); // Set the quantity of the item
+
+  // Accessor functions
+  string GetName() const;  // Get the name of the item
+  int GetPrice() const;    // Get the price of the item
+  int GetQuantity() const; // Get the quantity of the item
+
+private:
+  string itemName;  // Name of the item
+  int itemPrice;    // Price of the item
+  int itemQuantity; // Quantity of the item
+};
+
+// Default constructor definition
+ItemToPurchase::ItemToPurchase() {
+  itemName = "none"; // Initialize itemName to "none"
+  itemPrice = 0;     // Initialize itemPrice to 0
+  itemQuantity = 0;  // Initialize itemQuantity to 0
+}
+
+// Set the name of the item
+void ItemToPurchase::SetName(string name) {
+  itemName = name; // Assign the provided name to itemName
+}
+
+// Set the price of the item
+void ItemToPurchase::SetPrice(int price) {
+  itemPrice = price; // Assign the provided price to itemPrice
+}
+
+// Set the quantity of the item
+void ItemToPurchase::SetQuantity(int quantity) {
+  itemQuantity = quantity; // Assign the provided quantity to itemQuantity
+}
+
+// Get the name of the item
+string ItemToPurchase::GetName() const {
+  return itemName; // Return the name of the item
+}
+
+// Get the price of the item
+int ItemToPurchase::GetPrice() const {
+  return itemPrice; // Return the price of the item
+}
+
+// Get the quantity of the item
+int ItemToPurchase::GetQuantity() const {
+  return itemQuantity; // Return the quantity of the item
+}
+
+// Main function
+int main() {
+  ItemToPurchase item1,
+      item2; // Declare two objects of the ItemToPurchase class
+
+  // Prompt for input and set values for item1
+  cout << "Item 1" << endl;                   // Print prompt for item 1
+  cout << "Enter the item name:" << endl;     // Prompt for item name
+  string name1;                               // Variable to store item name
+  getline(cin, name1);                        // Read item name from input
+  item1.SetName(name1);                       // Set the name of item1
+  cout << "Enter the item price:" << endl;    // Prompt for item price
+  int price1;                                 // Variable to store item price
+  cin >> price1;                              // Read item price from input
+  item1.SetPrice(price1);                     // Set the price of item1
+  cout << "Enter the item quantity:" << endl; // Prompt for item quantity
+  int quantity1;                              // Variable to store item quantity
+  cin >> quantity1;                           // Read item quantity from input
+  item1.SetQuantity(quantity1);               // Set the quantity of item1
+
+  // Clear the input buffer before getting input for the second item
+  cin.ignore();
+
+  // Prompt for input and set values for item2
+  cout << "\nItem 2" << endl;                 // Print prompt for item 2
+  cout << "Enter the item name:" << endl;     // Prompt for item name
+  string name2;                               // Variable to store item name
+  getline(cin, name2);                        // Read item name from input
+  item2.SetName(name2);                       // Set the name of item2
+  cout << "Enter the item price:" << endl;    // Prompt for item price
+  int price2;                                 // Variable to store item price
+  cin >> price2;                              // Read item price from input
+  item2.SetPrice(price2);                     // Set the price of item2
+  cout << "Enter the item quantity:" << endl; // Prompt for item quantity
+  int quantity2;                              // Variable to store item quantity
+  cin >> quantity2;                           // Read item quantity from input
+  item2.SetQuantity(quantity2);               // Set the quantity of item2
+
+  // Output the total cost
+  cout << "\nTOTAL COST" << endl; // Print heading for total cost
+  cout << item1.GetName() << " " << item1.GetQuantity() << " @ $"
+       << item1.GetPrice() << " = $" << (item1.GetPrice() * item1.GetQuantity())
+       << endl; // Print details of item1
+  cout << item2.GetName() << " " << item2.GetQuantity() << " @ $"
+       << item2.GetPrice() << " = $" << (item2.GetPrice() * item2.GetQuantity())
+       << endl; // Print details of item2
+  cout << "\nTotal: $"
+       << ((item1.GetPrice() * item1.GetQuantity()) +
+           (item2.GetPrice() * item2.GetQuantity()))
+       << endl; // Print total cost
+
+  return 0; // Return 0 to indicate successful execution
+}

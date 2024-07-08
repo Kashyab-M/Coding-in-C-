@@ -1,0 +1,109 @@
+#include <iostream>
+#include <vector>
+#include <stdexcept>
+
+using namespace std;
+
+// Function to print the current board
+void print_board(const vector<vector<char>>& board) {
+    for (const auto& row : board) {
+        for (int i = 0; i < 3; ++i) {
+            cout << row[i];
+            if (i < 2) cout << " | ";
+        }
+        cout << endl;
+        if (&row != &board.back()) {
+            cout << "--|---|--" << endl;
+        }
+    }
+}
+
+// Function to check if a player has won
+bool check_winner(const vector<vector<char>>& board, char player) {
+    // Check rows, columns, and diagonals for a win
+    for (const auto& row : board) {
+        if (row[0] == player && row[1] == player && row[2] == player) return true;
+    }
+    for (int col = 0; col < 3; ++col) {
+        if (board[0][col] == player && board[1][col] == player && board[2][col] == player) return true;
+    }
+    if (board[0][0] == player && board[1][1] == player && board[2][2] == player) return true;
+    if (board[0][2] == player && board[1][1] == player && board[2][0] == player) return true;
+    return false;
+}
+
+// Function to check if the game is a draw
+bool check_draw(const vector<vector<char>>& board) {
+    for (const auto& row : board) {
+        for (char cell : row) {
+            if (cell == ' ') return false;
+        }
+    }
+    return true;
+}
+
+// Function to play the Tic Tac Toe game
+void tic_tac_toe() {
+    // Initialize the game board
+    vector<vector<char>> board(3, vector<char>(3, ' '));
+    char current_player = 'X';
+
+    // Instructions for the user
+    cout << "Welcome to Tic Tac Toe!" << endl;
+    cout << "Players take turns to enter their move." << endl;
+    cout << "Enter your move as two numbers separated by a space." << endl;
+    cout << "The first number is the row (0, 1, or 2) and the second number is the column (0, 1, or 2)." << endl;
+    cout << "For example, to place a marker in the top-left corner, enter: 0 0" << endl;
+    cout << "The game ends when a player wins or there is a draw." << endl << endl;
+
+    while (true) {
+        // Print the current board
+        print_board(board);
+        cout << "Player " << current_player << ", enter your move (row and column): ";
+
+        // Read the player's move
+        int row, col;
+        cin >> row >> col;
+
+        // Check for valid input
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            cout << "Invalid input! Please enter row and column values between 0 and 2." << endl;
+            continue;
+        }
+
+        // Check if the cell is already occupied
+        if (board[row][col] != ' ') {
+            cout << "Cell already occupied! Try again." << endl;
+            continue;
+        }
+
+        // Make the move
+        board[row][col] = current_player;
+
+        // Check if the current player wins
+        if (check_winner(board, current_player)) {
+            print_board(board);
+            cout << "Player " << current_player << " wins!" << endl;
+            break;
+        }
+
+        // Check for a draw
+        if (check_draw(board)) {
+            print_board(board);
+            cout << "It's a draw!" << endl;
+            break;
+        }
+
+        // Switch to the other player
+        current_player = (current_player == 'X') ? 'O' : 'X';
+    }
+}
+
+int main() {
+    try {
+        tic_tac_toe();
+    } catch (const exception& e) {
+        cerr << "An error occurred: " << e.what() << endl;
+    }
+    return 0;
+}

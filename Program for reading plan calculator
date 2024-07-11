@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string bookName, author;
+    int totalPages, days = 14; // 2 weeks = 14 days
+
+    // Get book details from user
+    cout << "Enter the name of the book: ";
+    getline(cin, bookName); // Use getline to allow spaces in the book name
+    cout << "Enter the author's name: ";
+    getline(cin, author); // Use getline to allow spaces in the author's name
+    cout << "Enter the total number of pages: ";
+    cin >> totalPages;
+
+    // Calculate pages to read per day
+    int pagesPerDay = totalPages / days;
+    int remainingPages = totalPages % days;
+
+    // Display book details and reading plan
+    cout << "\nBook Details:\n";
+    cout << "Book Name: " << bookName << endl;
+    cout << "Author: " << author << endl;
+    cout << "Total Pages: " << totalPages << endl;
+    cout << "\nReading Plan:\n";
+    cout << "You need to read " << pagesPerDay << " pages per day to finish the book in 2 weeks." << endl;
+    if (remainingPages > 0) {
+        cout << "Additionally, you will have to read " << remainingPages << " extra pages over the course of 2 weeks to completely finish the book." << endl;
+    }
+
+    return 0;
+}

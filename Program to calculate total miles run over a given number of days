@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+// Function to calculate total miles run over a given number of days
+double calculateTotalMiles(double dailyMiles[], int days) {
+  double totalMiles = 0.0;         // Initialize total miles to 0.0
+  for (int i = 0; i < days; i++) { // Loop through each day
+    totalMiles += dailyMiles[i];   // Add the miles run each day to total miles
+  }
+  return totalMiles; // Return the total miles run
+}
+
+int main() {
+  int days; // Variable to store the number of training days
+  cout << "Enter the number of training days: ";
+  cin >> days; // Get the number of training days from user input
+
+  double dailyMiles[days]; // Array to store the miles run each day
+  cout << "Enter the miles run each day:" << endl;
+  for (int i = 0; i < days; i++) { // Loop through each day
+    cout << "Day " << (i + 1) << ": ";
+    cin >> dailyMiles[i]; // Get the miles run for each day from user input
+  }
+
+  double totalMiles =
+      calculateTotalMiles(dailyMiles, days); // Calculate total miles run
+  cout << "Total miles run over " << days << " days: " << totalMiles << " miles"
+       << endl; // Display total miles run
+
+  return 0; // Return 0 to indicate successful execution
+}

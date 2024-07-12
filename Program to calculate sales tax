@@ -1,0 +1,31 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    double price, taxRate, taxAmount, totalAmount;
+
+    // Get the price of the item
+    cout << "Enter the price of the item: $";
+    cin >> price;
+
+    // Get the sales tax rate (in percentage)
+    cout << "Enter the sales tax rate (in percentage): ";
+    cin >> taxRate;
+
+    // Calculate the tax amount
+    taxAmount = price * (taxRate / 100.0);
+
+    // Calculate the total amount
+    totalAmount = price + taxAmount;
+
+    // Set precision for displaying currency values
+    cout << fixed << setprecision(2);
+
+    // Output the results
+    cout << "Sales Tax Amount: $" << taxAmount << endl;
+    cout << "Total Amount: $" << totalAmount << endl;
+
+    return 0;
+}

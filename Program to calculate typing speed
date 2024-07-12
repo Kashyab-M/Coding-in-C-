@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+#include <chrono>
+#include <thread>
+
+using namespace std;
+using namespace std::chrono;
+
+int main() {
+    string text = "The quick brown fox jumps over the lazy dog.";
+    string userInput;
+
+    cout << "Type the following text as fast as you can:\n";
+    cout << text << endl;
+
+    cout << "Press Enter to start typing..." << endl;
+    cin.ignore();  // Wait for the user to press Enter
+
+    // Start the timer
+    auto start = high_resolution_clock::now();
+
+    // Get the user's input
+    getline(cin, userInput);
+
+    // End the timer
+    auto end = high_resolution_clock::now();
+    auto duration = duration_cast<seconds>(end - start).count();
+
+    // Calculate the number of words in the text
+    int wordCount = 0;
+    for (char c : text) {
+        if (c == ' ') {
+            wordCount++;
+        }
+    }
+    wordCount++;  // Adding one for the last word
+
+    // Calculate typing speed in WPM
+    double wpm = (wordCount / (duration / 60.0));  // Words per minute
+
+    // Display results
+    cout << "Typing Speed: " << wpm << " WPM\n";
+    cout << "Time taken: " << duration << " seconds\n";
+
+    return 0;
+}

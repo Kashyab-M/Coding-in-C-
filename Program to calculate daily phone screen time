@@ -1,0 +1,49 @@
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+
+using namespace std;
+
+// Function to calculate the time difference
+// Takes start and end time in hours and minutes
+double calculateTimeSpent(int startHour, int startMinute, int endHour, int endMinute) {
+    // Initialize and set start time
+    tm startTime = {};
+    startTime.tm_hour = startHour;
+    startTime.tm_min = startMinute;
+    startTime.tm_sec = 0;
+
+    // Initialize and set end time
+    tm endTime = {};
+    endTime.tm_hour = endHour;
+    endTime.tm_min = endMinute;
+    endTime.tm_sec = 0;
+
+    // Convert tm structures to time_t (seconds since epoch)
+    time_t start = mktime(&startTime);
+    time_t end = mktime(&endTime);
+
+    // Calculate the difference in seconds and convert to minutes
+    double difference = difftime(end, start) / 60.0; 
+    return difference;
+}
+
+int main() {
+    int startHour, startMinute, endHour, endMinute;
+
+    // Prompt user for start time
+    cout << "Enter the start time (hour minute): ";
+    cin >> startHour >> startMinute;
+
+    // Prompt user for end time
+    cout << "Enter the end time (hour minute): ";
+    cin >> endHour >> endMinute;
+
+    // Calculate the time spent using the phone
+    double timeSpent = calculateTimeSpent(startHour, startMinute, endHour, endMinute);
+    
+    // Output the result
+    cout << "You spent " << timeSpent << " minutes using your phone." << endl;
+
+    return 0;
+}
